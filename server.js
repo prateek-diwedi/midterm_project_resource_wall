@@ -65,7 +65,7 @@ app.get("/sign_up_page", (req, res) => {
 });
 
 // ------------------------------user sign in -----------------------------
-app.post("/urls/register", (req, res) => {
+app.post("/sign_up_page", (req, res) => {
   let userName = req.body.username;
   let userEmail = req.body.email;
   let userPassword = req.body.password;
@@ -76,12 +76,7 @@ app.post("/urls/register", (req, res) => {
   };
 
   dbHelper.addUser(user);
-  //// creating user and inserting data into our database
-  // INSERT INTO users (name, email, password)
-  // VALUES (userName, userEmail, userPassword)
 
-  /// redirecting to the page
-  //req.session.username = userName;
   res.redirect('/');
 });
 
