@@ -2,19 +2,25 @@
 require('dotenv').config();
 
 // Web server config
-const PORT       = process.env.PORT || 8080;
-const ENV        = process.env.ENV || "development";
-const express    = require("express");
+const PORT = process.env.PORT || 8080;
+const ENV = process.env.ENV || "development";
+const express = require("express");
 const bodyParser = require("body-parser");
-const sass       = require("node-sass-middleware");
-const app        = express();
-const morgan     = require('morgan');
+const sass = require("node-sass-middleware");
+const app = express();
+const morgan = require('morgan');
 
 // PG database client/connection setup
 const { Pool } = require('pg');
 const dbParams = require('./lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
+/////////////////
+
+const dbHelper = require('./lib/db.js');
+
+
+//////////////////////
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -46,10 +52,47 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
+
+
+// --------------------------- get  commands --------------------------------------
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+////--------------------------- sign up page-----------------------------
+app.get("/sign_up_page", (req, res) => {
+  res.render("sign_up_page");
+});
+
+// ------------------------------user sign in -----------------------------
+app.post("/urls/register", (req, res) => {
+  let userName = req.body.username;
+  let userEmail = req.body.email;
+  let userPassword = req.body.password;
+  let user = {
+    name: userName,
+    email: userEmail,
+    password: userPassword
+  };
+
+  dbHelper.addUser(user);
+  //// creating user and inserting data into our database
+  // INSERT INTO users (name, email, password)
+  // VALUES (userName, userEmail, userPassword)
+
+  /// redirecting to the page
+  //req.session.username = userName;
+  res.redirect('/');
 });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
+
+
+/* insert query
+INSERT INTO users (name, email, password)
+VALUES
+*/
+

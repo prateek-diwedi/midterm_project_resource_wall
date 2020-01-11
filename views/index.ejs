@@ -1,17 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
 
-  <body>
-    <h1>Hello World!</h1>
-  </body>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <!-- Nav Bar CSS-->
+  <link src="nav-bar.css" rel="stylesheet" type="MIME">
+
+        <!-- responsive nav bar-->
+        <link rel="stylesheet" href="/public/styles/nav-bar.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+  <title>Reference Wall</title>
+</head>
+
+<body>
+  <%- include("./partials/_nav-bar") %>
+  <div class="welcome-image">
+    <img src="https://i.imgur.com/r4AsubB.jpg" alt="welcome page image" width="1435px">
+  </div>
+  <h1>Hello, world!</h1>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--sign up page-->
+<script type="text/javascript">
+  document.getElementById("signUpBtn").onclick = function () {
+      location.href = "/sign_up_page";
+  };
+</script>
+<!--sign in page-->
+<script type="text/javascript">
+  document.getElementById("signInBtn").onclick = function () {
+      location.href = "/sign_in_page";
+  };
+  </script>
+
+</body>
+
 </html>
