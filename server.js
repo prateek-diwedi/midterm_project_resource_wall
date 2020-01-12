@@ -81,7 +81,7 @@ app.post("/sign_up_page", (req, res) => {
 });
 
 
-////--------------------------- resource up page-----------------------------
+////--------------------------- add resource up page-----------------------------
 app.get("/add_resources", (req, res) => {
   res.render("add_resources");
 });
@@ -103,6 +103,24 @@ app.post("/add_resources", (req, res) => {
   dbHelper.addResource(resource);
 
   res.redirect("/");
+});
+
+
+////--------------------------- view resource  page-----------------------------
+app.get("/resource_view", (req, res) => {
+  dbHelper.getAllProperties('luke')
+    .then(rows => res.render("resource_view", { rows }));
+
+});
+
+////--------------------------- resource page-----------------------------
+app.post("/resource_view", (req, res) => {
+
+  //dbHelper.getAllProperties();
+
+  console.log('aa. post data -->', dbHelper.getAllProperties('luke'));
+
+  res.redirect("/resource_view");
 });
 
 app.listen(PORT, () => {
