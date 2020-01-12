@@ -17,7 +17,7 @@
 
       <!-- user name -->
 
-      <form class="form-inline justify-content-center" style="margin:auto;" action="/resources" method="POST">
+      <form class="form-inline justify-content-center" style="margin:auto;" action="/add_resources" method="POST">
         <div class="form-group mb-2">
           <label for="user details">Enter Your Details:</label>
           <input class="url" type="text" name="url" placeholder="url"
@@ -34,18 +34,10 @@
             <input class="description" type="text" name="description" placeholder="description"
               style="width: 300px; margin: 1em;">
           </div>
-          <div>
-            <input class="comment" type="text" name="comment" placeholder="comment"
-              style="width: 300px; margin: 1em;">
-          </div>
-          <div>
-            <input class="liked" type="boolean" name="liked" placeholder="like"
-              style="width: 300px; margin: 1em;">
-          </div>
-          <div>
-            <input class="rating" type="smallINT" name="rating" placeholder="rating"
-              style="width: 300px; margin: 1em;">
-          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" id="createBtn">Create Your Resource!</button>
+      </div>
+
         </div>
       </form>
     </div>

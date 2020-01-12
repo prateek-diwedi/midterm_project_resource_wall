@@ -80,6 +80,31 @@ app.post("/sign_up_page", (req, res) => {
   res.redirect('/');
 });
 
+
+////--------------------------- resource up page-----------------------------
+app.get("/add_resources", (req, res) => {
+  res.render("add_resources");
+});
+
+////--------------------------- resource page-----------------------------
+app.post("/add_resources", (req, res) => {
+
+  let theUrl = req.body.url;
+  let theUrlImage = req.body.url_image;
+  let theTitle = req.body.title;
+  let theDescription = req.body.description;
+  let resource = {
+    url: theUrl,
+    url_image: theUrlImage,
+    title: theTitle,
+    description: theDescription
+  };
+
+  dbHelper.addResource(resource);
+
+  res.redirect("/");
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
