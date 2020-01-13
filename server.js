@@ -35,12 +35,13 @@ app.use("/styles", sass({
   debug: true,
   outputStyle: 'expanded'
 }));
-app.use(express.static("public"));
+app.use(express.static("public/"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
+// const resourceRoutes = require("./routes/widgets");
 
 const test = require("./routes/dbRoutes");
 //const addUser = require("./routes/addUser");
@@ -51,6 +52,8 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 
 app.use("/", test(db));
+
+// app.use("/resource", resourceRoutes(db));
 //app.use("/api/addUser", addUser (db));
 
 // Note: mount other resources here, using the same pattern above
@@ -71,21 +74,8 @@ app.get("/sign_up_page", (req, res) => {
   res.render("sign_up_page");
 });
 
-// ------------------------------user sign in -----------------------------
-app.post("/sign_up_page", (req, res) => {
-  let userName = req.body.username;
-  let userEmail = req.body.email;
-  let userPassword = req.body.password;
-  let user = {
-    name: userName,
-    email: userEmail,
-    password: userPassword
-  };
 
-  dbHelper.addUser(user);
 
-  res.redirect('/');
-});
 
 
 ////--------------------------- add resource up page-----------------------------
