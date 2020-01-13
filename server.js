@@ -42,10 +42,17 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 
+const test = require("./routes/dbRoutes");
+//const addUser = require("./routes/addUser");
+
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
+
+app.use("/", test(db));
+//app.use("/api/addUser", addUser (db));
+
 // Note: mount other resources here, using the same pattern above
 
 
@@ -108,7 +115,7 @@ app.post("/add_resources", (req, res) => {
 
 ////--------------------------- view resource  page-----------------------------
 app.get("/resource_view", (req, res) => {
-  dbHelper.getAllProperties('luke')
+  dbHelper.getAllProperties()
     .then(rows => res.render("resource_view", { rows }));
 
 });
@@ -118,10 +125,18 @@ app.post("/resource_view", (req, res) => {
 
   //dbHelper.getAllProperties();
 
-  console.log('aa. post data -->', dbHelper.getAllProperties('luke'));
+  console.log('aa. post data -->', dbHelper.getAllProperties());
 
   res.redirect("/resource_view");
 });
+
+///// ------------------------ sign in page -------------------------------
+
+
+
+
+
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
