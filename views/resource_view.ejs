@@ -15,6 +15,8 @@
   <!-------------------------------- rating css ---------------------------------->
   <link rel="stylesheet" href="styles/resource_view.css"/>
 
+  <title>Resources</title>
+
 </head>
 
 <body>
@@ -39,11 +41,12 @@
               <h5 class="card-title"><%= resource.title %></h5>
               <p class="card-text"><%= resource.description %></p>
               <p><a href="<%= resource.url %>">Click here to visit the RESOURCE !</a></p>
-
+              <div>
+                <div>
               <i class="fa fa-thumbs-up"> <%= resource.liked %></i>
-              <div class="rating">
+            </div>
                 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                </div>
+              </div>
             </div>
           </div>
         </div>

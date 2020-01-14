@@ -4,7 +4,7 @@ $(() => {
   $("body").on('click', '.fa-thumbs-up', (event) => {
     $.ajax({
       method: "POST",
-      url: "/api/likre"
+      url: "/api/like"
     }).done((users) => {
 
       // gets button
