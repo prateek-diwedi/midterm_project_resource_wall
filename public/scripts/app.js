@@ -1,10 +1,22 @@
 $(() => {
-  $.ajax({
-    method: "GET",
-    url: "/api/users"
-  }).done((users) => {
-    for(user of users) {
-      $("<div>").text(user.name).appendTo($("body"));
-    }
-  });;
+
+
+  $("body").on('click', '.fa-thumbs-up', (event) => {
+    $.ajax({
+      method: "POST",
+      url: "/api/likre"
+    }).done((users) => {
+
+      // gets button
+      const $target = $(event.target);
+
+      // gets current like count
+      const currentLikes = Number($target.html());
+
+      // updates current like count
+      $target.html(currentLikes + 1);
+    });
+
+
+  });
 });
