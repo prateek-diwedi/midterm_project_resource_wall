@@ -20,6 +20,26 @@
 
       <% for (resource of rows) { %>
       <p></p>
+
+      <div class="card mb-3" style="max-width: none;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="<%= resource.url_image %>" class="card-img" alt="<%= resource.title %>" height="250px" width="250px">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= resource.title %></h5>
+              <p class="card-text"><%= resource.description %></p>
+              <p><a href="<%= resource.url %>">Click here to visit the RESOURCE !</a></p>
+
+              <i class="fa fa-thumbs-up"> <%= resource.liked %></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!--
         <div class="display div">
       <div class="card border-success mb-3" style="max-width: 100rem;">
         <div class="card-header bg-transparent border-success">Header</div>
@@ -37,6 +57,7 @@
 
       </div>
     </div>
+    -->
       <% } %>
 
     </div>

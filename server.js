@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 8080;
 const ENV = process.env.ENV || "development";
 const express = require("express");
 const bodyParser = require("body-parser");
+const cookieSession = require('cookie-session');
 const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require('morgan');
@@ -26,6 +27,10 @@ const dbHelper = require('./lib/db.js');
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}));
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -80,14 +85,24 @@ app.get("/sign_up_page", (req, res) => {
 
 ////--------------------------- add resource up page-----------------------------
 app.get("/add_resources", (req, res) => {
-  res.render("add_resources");
+
+  dbHelper.getCategories()
+    .then(rows => res.render("add_resources", { rows }));
+
+
 });
 
 ////--------------------------- resource page-----------------------------
 app.post("/add_resources", (req, res) => {
 
+  // dbHelper.getAllProperties()
+  // .then(rows => res.render("resource_view", { rows }));
+
   let theUrl = req.body.url;
   let theUrlImage = req.body.url_image;
+  let categories = req.body.categories;
+  console.log('categories', categories);
+
   let theTitle = req.body.title;
   let theDescription = req.body.description;
   let resource = {
@@ -95,6 +110,7 @@ app.post("/add_resources", (req, res) => {
     url_image: theUrlImage,
     title: theTitle,
     description: theDescription
+
   };
 
   dbHelper.addResource(resource);

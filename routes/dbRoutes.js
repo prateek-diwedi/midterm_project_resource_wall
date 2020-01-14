@@ -26,6 +26,7 @@ module.exports = (db) => {
     let userName = req.body.username;
     let userEmail = req.body.email;
     let userPassword = req.body.password;
+
     let user = {
       name: userName,
       email: userEmail,
@@ -50,7 +51,7 @@ module.exports = (db) => {
         if (data) {
 
           // if ((pass, data.password)) {
-          //req.session.email = data.email;
+          req.session.email = data.email;
           console.log('inside if -------->>>>>', req.session);
           return res.redirect("/resource_view");
           // } else {
