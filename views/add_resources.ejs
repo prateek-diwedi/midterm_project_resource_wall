@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- <html lang="en"> -->
 
-<head>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+<!-- <head> -->
+<!-- Bootstrap CSS -->
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="styles/add_resources.css">
@@ -16,7 +16,7 @@
     <div class="card-body">
       <h5 class="card-title">My Resources</h5>
 
-      <!-- user name -->
+      user name
 
       <form class="form-inline justify-content-center" style="margin:auto;" action="/add_resources" method="POST">
         <div class="form-group mb-2">
@@ -52,11 +52,11 @@
       </form>
     </div>
     <div class="card-footer text-muted"></div>
-  </div>
+  </div> -->
 
 
-  <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+<!-- Bootstrap JS -->
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -65,6 +65,68 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+</body>
+
+</html> -->
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="styles/add_resources.css">
+  <title>NEW RESOURCE</title>
+  <%- include("./partials/_nav-bar") %>
+</head>
+
+<body style="background-color:rgb(#785EFF, #36EBCB,#EAFFB0);"></body>
+<main style='margin:6em;'>
+  <h2 style="color:#024075; font-weight:bold;" align="center">ADD NEW RESOURCE</h2>
+  <form method="POST" action="/add_resources"><br><br>
+
+    <div class="form-group row">
+      <label for="url" class="col-sm-2 col-form-label"><b>Enter Resource URL:</b></label>
+      <div class="col-sm-8">
+        <input type="text" name="url" class="url" value="https://" required>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="form-group row">
+      <label name="title" class="col-sm-2 col-form-label"><b>Enter Title:</b></label>
+      <div class="col-sm-8">
+        <input type="text" class="title" name="title" placeholder="Enter Title">
+      </div>
+    </div>
+
+    <br>
+    <div>
+
+      <select name="categories">
+        <% for (resource of rows) { %>
+        <option value="<%= resource.id %>"><%= resource.category_name %></option>
+        <% } %>
+      </select>
+
+    </div>
+
+    <div class="form-group row">
+      <label for="description" class="col-sm-2 col-form-label"><b>Enter Description:</b></label>
+      <div class="col-sm-8">
+        <textarea class="description"  name="description" rows="3" required></textarea>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+      </div>
+    </div>
+  </form>
+</main>
 </body>
 
 </html>
