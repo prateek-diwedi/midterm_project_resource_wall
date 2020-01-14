@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -36,37 +35,42 @@
               </div>
               <input name="url" placeholder="url">
             </div>
-                <div class="input-group form-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-heading"></i></span>
-                  </div>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-image"></i></span>
+              </div>
+              <input name="url_image" placeholder="url_image"></input>
+            </div>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-heading"></i></span>
+              </div>
+              <input name="title" placeholder="title">
+            </div>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-text-height"></i></span>
+              </div>
+              <textarea name="description" placeholder="description"></textarea>
+            </div>
 
-                  <input name="title" placeholder="title">
-                </div>
-                <div class="input-group form-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-text-height"></i></span>
-                  </div>
-                  <textarea name="description" placeholder="description"></textarea>
-                </div>
-                  <select name="categories">
-                    <% for (resource of rows) { %>
-                    <option value="<%= resource.id %>"><%= resource.category_name %></option>
-                    <% } %>
-                  </select>
-                </div>
-                <div class="col-sm-10">
-                  <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-                </div>
-
-                <div>
+            <select name="categories">
+              <% for (resource of rows) { %>
+              <option value="<%= resource.id %>"><%= resource.category_name %> </option>
+              <% } %>
+            </select>
+        </div>
+        <div class="col-sm-10">
+          <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+        </div>
+        <div>
         </div>
       </div>
     </div>
   </div>
   </div>
-
   </form>
 </body>
+
 
 </html>
