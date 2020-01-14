@@ -50,13 +50,13 @@ module.exports = (db) => {
         console.log('user found in the sign in page -------->', data);
         if (data) {
 
-          // if ((pass, data.password)) {
-          req.session.email = data.email;
-          console.log('inside if -------->>>>>', req.session);
-          return res.redirect("/resource_view");
-          // } else {
-          //   res.status(403).send("password no good!!!!");
-          // }
+          if ((pass, data.password)) {
+            req.session.email = data.email;
+            console.log('inside if -------->>>>>', req.session);
+            return res.redirect("/resource_view");
+          } else {
+            res.status(403).send("password no good!!!!");
+          }
         } else { // no user found
           res.status(403).send("user no findy!");
         }

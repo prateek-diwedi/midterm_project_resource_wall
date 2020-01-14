@@ -109,21 +109,20 @@ app.post("/add_resources", (req, res) => {
     url: theUrl,
     url_image: theUrlImage,
     title: theTitle,
-    description: theDescription
-
+    description: theDescription,
+    category_id: categories
   };
 
   dbHelper.addResource(resource);
 
-  res.redirect("/");
+  res.redirect("/resource_view");
 });
 
 
 ////--------------------------- view resource  page-----------------------------
 app.get("/resource_view", (req, res) => {
-  dbHelper.getAllProperties()
+  dbHelper.getAllProperties(req.query, 10)
     .then(rows => res.render("resource_view", { rows }));
-
 });
 
 ////--------------------------- resource page-----------------------------
