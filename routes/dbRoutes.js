@@ -30,7 +30,8 @@ module.exports = (db) => {
     let user = {
       name: userName,
       email: userEmail,
-      password: userPassword
+      password: userPassword,
+      username: req.session["email"]
     };
 
     dbHelper.addUser(user);
@@ -45,6 +46,8 @@ module.exports = (db) => {
     console.log('email in the box', req.body);
     let pass = req.body.password;
     console.log('pass in the box', pass);
+    let userMail = req.session["email"]
+    console.log('username', userMail);
     const userFound = dbHelper.findUser(email)
       .then(data => {
         console.log('user found in the sign in page -------->', data);
@@ -64,6 +67,9 @@ module.exports = (db) => {
 
 
   });
+
+
+
 
 
   return router;

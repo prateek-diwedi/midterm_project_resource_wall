@@ -1,12 +1,13 @@
 -- Drop and recreate Users table (Example)
-CREATE DATABASE midterm;
-\c midterm
+
+-- CREATE DATABASE midterm;
 
 
-DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS learning_resources CASCADE;
-DROP TABLE IF EXISTS categories CASCADE;
-DROP TABLE IF EXISTS resource_reviews CASCADE;
+
+-- DROP TABLE IF EXISTS users CASCADE;
+-- DROP TABLE IF EXISTS categories CASCADE;
+-- DROP TABLE IF EXISTS learning_resources CASCADE;
+-- DROP TABLE IF EXISTS resource_reviews CASCADE;
 
 
 CREATE TABLE users
@@ -23,13 +24,7 @@ CREATE TABLE categories (
    category_name VARCHAR(255) NOT NULL
  );
 
-  CREATE TABLE resource_reviews (
-   id SERIAL PRIMARY KEY NOT NULL,
-   comment TEXT,
-   liked BOOLEAN,
-   rating SMALLINT NOT NULL DEFAULT 0,
-   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
- );
+
 
 
  CREATE TABLE learning_resources (
@@ -39,11 +34,29 @@ CREATE TABLE categories (
    title VARCHAR(500) NOT NULL,
    description TEXT,
    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-   category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
-   resource_review_id INTEGER REFERENCES resource_reviews(id) ON DELETE CASCADE
+   category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE
  );
 
+CREATE TABLE likes (
+   id SERIAL PRIMARY KEY NOT NULL,
+   liked BOOLEAN,
+   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+   like_id INTEGER REFERENCES learning_resources(id) ON DELETE CASCADE
+ );
 
+ CREATE TABLE comments (
+   id SERIAL PRIMARY KEY NOT NULL,
+   comment TEXT,
+   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+   comment_id INTEGER REFERENCES learning_resources(id) ON DELETE CASCADE
+ );
+
+ CREATE TABLE ratings (
+   id SERIAL PRIMARY KEY NOT NULL,
+   rating SMALLINT,
+   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+   rating_id INTEGER REFERENCES learning_resources(id) ON DELETE CASCADE
+ );
 
 
 

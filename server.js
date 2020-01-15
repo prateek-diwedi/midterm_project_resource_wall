@@ -74,10 +74,7 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-////--------------------------- sign up page-----------------------------
-app.get("/sign_up_page", (req, res) => {
-  res.render("sign_up_page");
-});
+
 
 
 
@@ -137,6 +134,13 @@ app.post("/resource_view", (req, res) => {
 
 ///// ------------------------ ratings -------------------------------
 
+app.post("/api/like", (req, res) => {
+  console.log('data sent to like', dbHelper.increaseLike());
+
+  dbHelper.increaseLike();
+
+  res.redirect("/resource_view");
+});
 
 
 
