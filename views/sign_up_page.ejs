@@ -1,41 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <!--Fontawesome CDN-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  <link rel="stylesheet" href="styles/signuppage.css" />
+
   <title>Sign Up Page</title>
+
 </head>
 
 <body>
-    <!-- <%- include("./partials/_nav-bar") %> -->
-  <div class="card text-center">
-      <div class="card-header"></div>
-      <div class="card-body">
-        <h1 class="card-title">Reference Wall Sign Up Page</h1>
+  <!-- <%- include("./partials/_nav-bar") %> -->
+  <div class="card-body">
 
-         <!-- user name -->
+    <!-- user name -->
+    <h1 class="card-title">Reference Wall Sign Up Page</h1>
 
-    <form class="form-inline justify-content-center" style="margin:auto;" action="/sign_up_page" method="POST">
-      <div class="form-group mb-2">
-        <label for="user details">Enter Your Details:</label>
-        <input class="form-control" type="text" name="username" placeholder="User Name" style="width: 300px; margin: 1em;">
-        <div>
-        <input class="form-control" type="email" name="email" placeholder="email" style="width: 300px; margin: 1em;">
+    <form action="/sign_up_page" method="POST">
+      <div class="input-group form-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-heading"></i></span>
         </div>
-        <div>
-        <input class="form-control" type="password" name="password" placeholder="Password" style="width: 300px; margin: 1em;">
+        <input type="text" name="username" placeholder="username">
+      </div>
+      <div class="input-group form-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-heading"></i></span>
         </div>
-        <button type="submit" class="btn btn-primary">Sign Up!</button>
+        <input type="email" name="email" placeholder="email">
+      </div>
+      <div class="input-group form-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-heading"></i></span>
+        </div>
+        <input class="password" type="password" name="password" placeholder="password">
+      </div>
+      <button type="submit" class="btn btn-primary">Sign Up!</button>
+
+    </form>
+  </div>
+</body>
+
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</html>
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>REGISTRATION</title>
+</head>
+
+<body>
+  <main class="container" style="margin:6em;">
+    <h2><b>Registration</b></h2>
+    <p>Please fill in this form to create an account.</p><br>
+    <form method="POST" action="/sign_up_page">
+      <div class="form-group row">
+        <label name="email" class="col-sm-2 col-form-label"><b>Username:</b></label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" name="user_name" placeholder="Enter Username">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label name="email" class="col-sm-2 col-form-label"><b>Email:</b></label>
+        <div class="col-sm-4">
+          <input type="email" class="form-control" name="email" placeholder="Enter Email">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label name="password" class="col-sm-2 col-form-label"><b>Password:</b></label>
+        <div class="col-sm-4">
+          <input type="password" class="form-control" name="password" placeholder="Enter Password">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label name="email" class="col-sm-2 col-form-label"><b>Avatar_URL:</b></label>
+        <div class="col-sm-4">
+          <input type="avatar" class="form-control" name="avatar_url" placeholder="Enter Avatar_URL">
+        </div>
+      </div>
+
+      <br>
+
+      <div class="form-group row" style="text-align:right">
+        <div class="col-sm-6">
+          <button type="submit" class="btn btn-success btn-lg">Submit</button>
+        </div>
       </div>
     </form>
-      </div>
-    <div class="card-footer text-muted"></div>
-  </div>
-
-
-  <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </main>
 </body>
-</html>
+</html> -->
