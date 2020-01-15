@@ -15,12 +15,6 @@
   <!-------------------------------- rating css ---------------------------------->
   <link rel="stylesheet" href="styles/resource_view.css"/>
 
-
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
 </head>
 
 <body>
@@ -46,20 +40,18 @@
               <p class="card-text"><%= resource.description %></p>
               <p><a href="<%= resource.url %>">Click here to visit the RESOURCE !</a></p>
 
-              <i class="fa fa-thumbs-up"> <%= resource.liked %></i>
-              <div class="rating">
-                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                </div>
-
-                <div>
+              <i class="fa fa-thumbs-up" id="<%= resource.id %>"> <%= resource.liked %></i>
+              <div>
 
 
+              <b class="rating">
+                 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+              </b>
 
-                  
-
-
-
-
+              <b style="display: inline-table ; padding: 10px;">
+              <%= resource.rating %>
+            </b>
+            </div>
             </div>
           </div>
         </div>

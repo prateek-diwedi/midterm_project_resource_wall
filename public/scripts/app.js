@@ -4,7 +4,8 @@ $(() => {
   $("body").on('click', '.fa-thumbs-up', (event) => {
     $.ajax({
       method: "POST",
-      url: "/api/like"
+      url: "/api/like",
+      data: "#value"
     }).done((users) => {
 
     });
