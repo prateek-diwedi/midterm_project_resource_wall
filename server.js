@@ -136,8 +136,9 @@ app.post("/resource_view", (req, res) => {
 
 app.post("/api/like", (req, res) => {
   console.log('data sent to like', dbHelper.increaseLike());
-
-  dbHelper.increaseLike();
+  let liked = 1;
+  console.log('below liked--------->', req.body);
+  dbHelper.increaseLike(liked);
 
   res.redirect("/resource_view");
 });

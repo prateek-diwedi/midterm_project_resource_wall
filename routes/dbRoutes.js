@@ -43,10 +43,10 @@ module.exports = (db) => {
   //// ---------------------------- user sign in ----------------------------
   router.post("/login_page", (req, res) => {
     let email = req.body.email;
-    console.log('email in the box', req.body);
+    console.log('email in the box', email);
     let pass = req.body.password;
     console.log('pass in the box', pass);
-    let userMail = req.session["email"]
+    let userMail = req.session["email"];
     console.log('username', userMail);
     const userFound = dbHelper.findUser(email)
       .then(data => {
@@ -54,7 +54,8 @@ module.exports = (db) => {
         if (data) {
 
           if ((pass, data.password)) {
-            req.session.email = data.email;
+            email === data.email;
+            console.log('inside if  pass-------->>>>>', data.password);
             console.log('inside if -------->>>>>', req.session);
             return res.redirect("/resource_view");
           } else {

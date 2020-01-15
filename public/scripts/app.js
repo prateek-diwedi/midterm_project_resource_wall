@@ -5,12 +5,13 @@ $(() => {
     $.ajax({
       method: "POST",
       url: "/api/like",
-      data: "#value"
+      data: 'id'
     }).done((users) => {
 
     });
     // gets button
     const $target = $(event.target);
+    console.log('target --------------->>>>>>>>> ', $target);
 
     // gets current like count
     const currentLikes = Number($target.html());
