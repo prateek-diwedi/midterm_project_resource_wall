@@ -35,7 +35,9 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <pre>Reseouce Created By : <%= resource.email %></pre>
+              <div class="header">
+              <pre class="creator">Reseouce Created By : <%= resource.email %></pre>
+            </div>
               <h5 class="card-title"><%= resource.title %></h5>
               <p class="card-text"><%= resource.description %></p>
               <p><a href="<%= resource.url %>">Click here to visit the RESOURCE !</a></p>

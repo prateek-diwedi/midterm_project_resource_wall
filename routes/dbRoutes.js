@@ -44,7 +44,7 @@ module.exports = (db) => {
 
     dbHelper.addUser(user);
 
-    res.redirect('/');
+    res.redirect('/resource_view');
   });
 
 
@@ -95,3 +95,33 @@ module.exports = (db) => {
   });
   return router;
 };
+
+
+///////// -------------------------- update profile --------------------------
+router.post("/updateprofile", (req, res) => {
+  const userId = req.session.userId;
+  console.log('user id in the request body -----<<>>', userId);
+  let userName = req.body.username;
+  let userEmail = req.body.email;
+  let userPassword = req.body.password;
+
+  let user = {
+    name: userName,
+    email: userEmail,
+    password: userPassword,
+    id: userId
+  };
+
+  const userUpdate = dbHelper.updateUser(user)
+    .then(data => {
+      if (data) {
+        req.session.userId = data.id;
+        req.session.email = data.email;
+        return res.redirect('/resource_view');
+      } else {
+        res.status(403).send("user not updated!!!!");
+      }
+    });
+
+
+});
