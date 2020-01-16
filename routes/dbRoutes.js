@@ -12,19 +12,19 @@ module.exports = (db) => {
 
   // --------------------------- get  commands --------------------------------------
   router.get("/", (req, res) => {
-    const userId = req.session.userId;
-    if (userId) {
-      let templateVars = { userId: userId };
+    const email = req.session.email;
+    if (email) {
+      let templateVars = { userId: email };
       res.render("index", templateVars);
     } else {
-      res.render("index", { userId });
+      res.render("index", { email });
     }
   });
 
   ////--------------------------- sign up page-----------------------------
   router.get("/sign_up_page", (req, res) => {
-    const userId = req.session.userId;
-    res.render("sign_up_page" , { userId });
+    const email = req.session.email;
+    res.render("sign_up_page" , { email });
   });
 
 
@@ -62,12 +62,13 @@ module.exports = (db) => {
         console.log('user found in the sign in page -------->', data);
         if (data) {
 
-          if ((pass, data.password)) {
+          if ((pass === data.password)) {
             email === data.email;
             console.log('inside if  pass-------->>>>>', data.password);
             console.log('data:', data);
             req.session.userId = data.id;
-            console.log('inside if email -------->>>>>', req.session);
+            req.session.email = data.email;
+            console.log('inside if email >>>>>>>>>>>-------->>>>>', req.session.email);
             return res.redirect("/resource_view");
           } else {
             res.status(403).send("password no good!!!!");

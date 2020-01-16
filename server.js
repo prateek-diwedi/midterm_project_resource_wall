@@ -82,9 +82,9 @@ app.use("/", test(db));
 
 ////--------------------------- add resource up page-----------------------------
 app.get("/add_resources", (req, res) => {
-  const userId = req.session.userId;
+  const email = req.session.email;
   dbHelper.getCategories()
-    .then(rows => res.render("add_resources", { rows, userId }));
+    .then(rows => res.render("add_resources", { rows, email }));
 
 
 });
@@ -120,10 +120,10 @@ app.post("/add_resources", (req, res) => {
 app.get("/resource_view", (req, res) => {
 
   console.log('inside resource wiews >>>>>>>>>>>>>>>>>>>>>>', req.session);
-  const userId = req.session.userId;
+  const email = req.session.email;
 
   dbHelper.getAllProperties(req.query, 10)
-    .then(rows => res.render("resource_view", { rows, userId }));
+    .then(rows => res.render("resource_view", { rows, email }));
 });
 
 ////--------------------------- resource page-----------------------------
