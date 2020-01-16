@@ -112,7 +112,16 @@ router.post("/updateprofile", (req, res) => {
     id: userId
   };
 
-  dbHelper.updateUser(user);
+  const userUpdate = dbHelper.updateUser(user)
+    .then(data => {
+      if (data) {
+        req.session.userId = data.id;
+        req.session.email = data.email;
+        return res.redirect('/resource_view');
+      } else {
+        res.status(403).send("user not updated!!!!");
+      }
+    });
 
-  res.redirect('/resource_view');
+
 });
