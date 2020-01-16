@@ -14,7 +14,7 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     const email = req.session.email;
     if (email) {
-      let templateVars = { userId: email };
+      let templateVars = { email: email };
       res.render("index", templateVars);
     } else {
       res.render("index", { email });
@@ -24,7 +24,7 @@ module.exports = (db) => {
   ////--------------------------- sign up page-----------------------------
   router.get("/sign_up_page", (req, res) => {
     const email = req.session.email;
-    res.render("sign_up_page" , { email });
+    res.render("sign_up_page", { email });
   });
 
 
@@ -85,8 +85,13 @@ module.exports = (db) => {
   //// ---------------------------- logout ----------------------------
   router.get("/logout", (req, res) => {
     req.session = null;
-    res.render("index", { userId: null});
+    res.render("index", { email: null });
   });
 
+  ////// -------------------------  update details page ------------------
+  router.get("/update-profile", (req, res) => {
+    const email = req.session.emai;
+    res.render("update_profile", { email });
+  });
   return router;
 };
