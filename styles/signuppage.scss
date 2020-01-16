@@ -1,13 +1,9 @@
-/* Made with love by Mutiullah Samim*/
-
-
 html,body{
 background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
 background-size: cover;
 background-repeat: no-repeat;
 height: 100%;
 font-family: 'Numans', sans-serif;
-text-align: center;
 }
 
 .container{
@@ -21,6 +17,9 @@ margin-top: auto;
 margin-bottom: auto;
 width: 400px;
 background-color: rgba(0,0,0,0.5) !important;
+}
+.card-footer{
+font-size: 20px;
 }
 
 .social_icon span{
@@ -88,15 +87,6 @@ color: white;
 margin-left: 4px;
 }
 
-h1 {
-  text-align: center;
-  color: red;
-  font-size:40px;
-}
-
-form {
-  display: inline-block;
-}
 
 
 
