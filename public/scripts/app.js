@@ -1,9 +1,10 @@
 $(() => {
 
   //////////// -------------------------------- LIKES -------------------------------------
-  $("body").on('click', '.fa-thumbs-up', (event) => {
-    console.log('event target ID:', event.target.id);
-    const resourceId = event.target.id.slice(event.target.id.indexOf('_') + 1); // Get the ID of the resource from the ID of the thumbs up icon
+  $("body").on('click', '.like-wrapper', function(event) {
+    const $this = $(this);
+    const { resourceId, likes } = $this.data(); // Get the ID of the resource from the ID of the thumbs up icon
+
     $.ajax({
       method: "POST",
       url: `/api/resources/${resourceId}/likes`,
@@ -11,24 +12,19 @@ $(() => {
     }).done((users) => {
       console.log('success:', users);
     });
-    // gets button
-    const $target = $(event.target);
-    console.log('target --------------->>>>>>>>> ', $target);
 
-    // // gets current like count
-    // const currentLikes = Number($target.html());
-
-    // // updates current like count
-    // $target.html(currentLikes);
-
-
+    $this.find('.likes').html(Number(likes) + 1)
+    $this.data('likes', Number(likes) + 1)
   });
 
 
   //////////// ----------------------- rating stars ----------------------------------
 
 
-  $("body").on('click', '.star', (event) => {
+  $("body").on('click', '.star', function(event) {
+    const $this = $(this)
+
+
     console.log('star clicked --->>', event.target.id);
     handleStarClick(event.target.id);
 

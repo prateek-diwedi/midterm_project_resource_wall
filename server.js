@@ -142,6 +142,7 @@ app.post('/api/resources/:resource_id/likes', (req, res) => {
   const resourceId = req.params.resource_id;
   const userId = req.session.userId;
   console.log('logged in user id:', userId);
+
   dbHelper.addUserResourceLike(userId, resourceId).then((result) => {
 
     res.status(200).send(`like insert result: ${result.rows[0]}`);

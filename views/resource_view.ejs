@@ -10,59 +10,63 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-------------------------------- rating css ---------------------------------->
-  <link rel="stylesheet" href="styles/rating.css"
-
-  <!-------------------------------- rating css ---------------------------------->
-  <link rel="stylesheet" href="styles/resource_view.css"/>
+  <link rel="stylesheet" href="styles/rating.css" <!-------------------------------- rating css
+    ---------------------------------->
+  <link rel="stylesheet" href="styles/resource_view.css" />
 
 </head>
 
 <body>
   <%- include("./partials/_nav-bar") %>
-  <div class="card text-center";
-">
+  <div class="card text-center" ; ">
 
-    <div class="card-body">
-      <h5 class="card-title">The Great wall of Resources</h5>
+    <div class=" card-body">
+    <h5 class="card-title">The Great wall of Resources</h5>
 
-      <% for (resource of rows) { %>
-      <p></p>
+    <% for (resource of rows) { %>
+    <p></p>
 
-      <div class="card mb-3" style="max-width: none;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="<%= resource.url_image %>" class="card-img" alt="<%= resource.title %>" height="375px"; width="250px" style="padding-top: 3px; padding-bottom: 3px; padding-left: 4px;">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <div class="header">
+    <div class="card mb-3" style="max-width: none;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="<%= resource.url_image %>" class="card-img" alt="<%= resource.title %>" height="375px" ;
+            width="250px" style="padding-top: 3px; padding-bottom: 3px; padding-left: 4px;">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <div class="header">
               <pre class="creator">Resource Created By : <%= resource.email %></pre>
             </div>
-              <h5 class="card-title"><%= resource.title %></h5>
-              <p class="card-text"><%= resource.description %></p>
-              <p><a href="<%= resource.url %>">Click here to visit the RESOURCE !</a></p>
+            <h5 class="card-title"><%= resource.title %></h5>
+            <p class="card-text"><%= resource.description %></p>
+            <p><a href="<%= resource.url %>">Click here to visit the RESOURCE !</a></p>
 
 
-              <i class="fa fa-thumbs-up" id="resource_<%= resource.id %>"> </i><span> <%= resource.liked / 9 %> </span>
-              <div>
-
-
-              <b class="rating">
-                 <span class="fiveStar star" id="5">☆</span><span class="fourStar star" id="4">☆</span><span class="threeStar star" id="3">☆</span><span class="twoStar star" id="2">☆</span><span class="oneStar star" id=1>☆</span>
-              </b>
-              <div > Avg. Rating :
-              <b style="display: inline-table ; padding: 10px;">
-              <%= resource.rating %>
-            </b>
-          </div>
+            <div class="like-wrapper" data-resource-id="<%= resource.id %>" data-likes="<%= resource.liked / 9%>">
+              <i class="fa fa-thumbs-up"></i>
+              <span class="likes"> <%= resource.liked / 9%> </span>
             </div>
+
+
+            <div>
+              <b class="rating">
+                <span class="fiveStar star" id="5">☆</span><span class="fourStar star" id="4">☆</span><span
+                  class="threeStar star" id="3">☆</span><span class="twoStar star" id="2">☆</span><span
+                  class="oneStar star" id=1>☆</span>
+              </b>
+              <div> Avg. Rating :
+                <b style="display: inline-table ; padding: 10px;">
+                  <%= resource.rating %>
+                </b>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
 
-      <!--
+    <!--
         <div class="display div">
       <div class="card border-success mb-3" style="max-width: 100rem;">
         <div class="card-header bg-transparent border-success">Header</div>
@@ -81,9 +85,9 @@
       </div>
     </div>
     -->
-      <% } %>
+    <% } %>
 
-    </div>
+  </div>
 
   </div>
 
@@ -97,7 +101,7 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 
-    <script src="scripts/app.js"></script>
+  <script src="scripts/app.js"></script>
 </body>
 
 </html>
