@@ -35,12 +35,13 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
+              <pre>Resource ID: <%= resource.id %></pre>
               <h5 class="card-title"><%= resource.title %></h5>
               <p class="card-text"><%= resource.description %></p>
               <p><a href="<%= resource.url %>">Click here to visit the RESOURCE !</a></p>
 
-              
-              <i class="fa fa-thumbs-up" id="<%= resource.id %>"> <%= resource.liked %></i>
+
+              <i class="fa fa-thumbs-up" id="resource_<%= resource.id %>"> </i><span> <%= resource.liked %> </span>
               <div>
 
 

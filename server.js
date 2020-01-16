@@ -70,9 +70,9 @@ app.use("/", test(db));
 
 
 // --------------------------- get  commands --------------------------------------
-app.get("/", (req, res) => {
-  res.render("index");
-});
+// app.get("/", (req, res) => {
+//   res.render("index");
+// });
 
 
 
@@ -82,9 +82,9 @@ app.get("/", (req, res) => {
 
 ////--------------------------- add resource up page-----------------------------
 app.get("/add_resources", (req, res) => {
-
+  const userId = req.session.userId;
   dbHelper.getCategories()
-    .then(rows => res.render("add_resources", { rows }));
+    .then(rows => res.render("add_resources", { rows, userId }));
 
 
 });
@@ -118,13 +118,17 @@ app.post("/add_resources", (req, res) => {
 
 ////--------------------------- view resource  page-----------------------------
 app.get("/resource_view", (req, res) => {
+
+  console.log('inside resource wiews >>>>>>>>>>>>>>>>>>>>>>', req.session);
+  const userId = req.session.userId;
+
   dbHelper.getAllProperties(req.query, 10)
-    .then(rows => res.render("resource_view", { rows }));
+    .then(rows => res.render("resource_view", { rows, userId }));
 });
 
 ////--------------------------- resource page-----------------------------
 app.post("/resource_view", (req, res) => {
-
+  //const userId = req.session.userId;
   //dbHelper.getAllProperties();
 
   console.log('aa. post data -->', dbHelper.getAllProperties());
@@ -132,7 +136,20 @@ app.post("/resource_view", (req, res) => {
   res.redirect("/resource_view");
 });
 
-///// ------------------------ ratings -------------------------------
+///// ------------------------ likes -------------------------------
+
+
+app.post('/api/resources/:resource_id/likes', (req, res) => {
+  const resourceId = req.params.resource_id;
+  const userId = req.session.userId;
+  console.log('logged in user id:', userId);
+  dbHelper.addUserResourceLike(userId, resourceId).then((result) => {
+    res.status(200).send(`like insert result: ${result.rows[0]}`);
+  }).catch(error => {
+    console.log('error:', error);
+    res.status(500).send(`error inserting like: ${error}`);
+  });
+});
 
 app.post("/api/like", (req, res) => {
   console.log('data sent to like', dbHelper.increaseLike());

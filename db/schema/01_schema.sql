@@ -39,23 +39,22 @@ CREATE TABLE categories (
 
 CREATE TABLE likes (
    id SERIAL PRIMARY KEY NOT NULL,
-   liked BOOLEAN,
    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-   like_id INTEGER REFERENCES learning_resources(id) ON DELETE CASCADE
+   resource_id INTEGER REFERENCES learning_resources(id) ON DELETE CASCADE
  );
 
  CREATE TABLE comments (
    id SERIAL PRIMARY KEY NOT NULL,
    comment TEXT,
    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-   comment_id INTEGER REFERENCES learning_resources(id) ON DELETE CASCADE
+   resource_id INTEGER REFERENCES learning_resources(id) ON DELETE CASCADE
  );
 
  CREATE TABLE ratings (
    id SERIAL PRIMARY KEY NOT NULL,
    rating SMALLINT,
    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-   rating_id INTEGER REFERENCES learning_resources(id) ON DELETE CASCADE
+   resource_id INTEGER REFERENCES learning_resources(id) ON DELETE CASCADE
  );
 
 

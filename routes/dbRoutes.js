@@ -12,17 +12,25 @@ module.exports = (db) => {
 
   // --------------------------- get  commands --------------------------------------
   router.get("/", (req, res) => {
-    res.render("index");
+    const userId = req.session.userId;
+    if (userId) {
+      let templateVars = { userId: userId };
+      res.render("index", templateVars);
+    } else {
+      res.render("index", { userId });
+    }
   });
 
   ////--------------------------- sign up page-----------------------------
   router.get("/sign_up_page", (req, res) => {
-    res.render("sign_up_page");
+    const userId = req.session.userId;
+    res.render("sign_up_page" , { userId });
   });
 
 
   // ------------------------------user sign up \\ add user in database -----------------------------
   router.post("/sign_up_page", (req, res) => {
+    const userId = req.session.userId;
     let userName = req.body.username;
     let userEmail = req.body.email;
     let userPassword = req.body.password;
@@ -42,12 +50,13 @@ module.exports = (db) => {
 
   //// ---------------------------- user sign in ----------------------------
   router.post("/login_page", (req, res) => {
+    const userId = req.session.userId;
     let email = req.body.email;
     console.log('email in the box', email);
     let pass = req.body.password;
     console.log('pass in the box', pass);
-    let userMail = req.session["email"];
-    console.log('username', userMail);
+    let userMail = req.session;
+    console.log('username ________-------------______------>>>', userMail);
     const userFound = dbHelper.findUser(email)
       .then(data => {
         console.log('user found in the sign in page -------->', data);
@@ -56,7 +65,9 @@ module.exports = (db) => {
           if ((pass, data.password)) {
             email === data.email;
             console.log('inside if  pass-------->>>>>', data.password);
-            console.log('inside if -------->>>>>', req.session);
+            console.log('data:', data);
+            req.session.userId = data.id;
+            console.log('inside if email -------->>>>>', req.session);
             return res.redirect("/resource_view");
           } else {
             res.status(403).send("password no good!!!!");
@@ -70,8 +81,11 @@ module.exports = (db) => {
   });
 
 
-
-
+  //// ---------------------------- logout ----------------------------
+  router.get("/logout", (req, res) => {
+    req.session = null;
+    res.render("index", { userId: null});
+  });
 
   return router;
 };

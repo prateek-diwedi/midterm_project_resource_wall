@@ -8,20 +8,31 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <% if (!userId) { %>
         <li class="nav-item ">
           <a class="nav-link" href="/sign_up_page">Sign Up <span class="sr-only"></span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/sign_in_page">Sign In</a>
         </li>
+        <% } else { %>
         <li class="nav-item">
           <a class="nav-link" href="/add_resources">Create Resource</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/resource_view">All Resources</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/resource_view">Update User Details</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Log Out</a>
+        </li>
+        <p> Logged In A : <%= userId %> </p>
+        <% } %>
       </ul>
 
 
