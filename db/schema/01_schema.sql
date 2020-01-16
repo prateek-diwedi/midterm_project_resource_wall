@@ -1,13 +1,13 @@
 -- Drop and recreate Users table (Example)
 
--- CREATE DATABASE midterm;
 
 
-
--- DROP TABLE IF EXISTS users CASCADE;
--- DROP TABLE IF EXISTS categories CASCADE;
--- DROP TABLE IF EXISTS learning_resources CASCADE;
--- DROP TABLE IF EXISTS resource_reviews CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS categories CASCADE;
+DROP TABLE IF EXISTS learning_resources CASCADE;
+DROP TABLE IF EXISTS likes CASCADE;
+DROP TABLE IF EXISTS comments CASCADE;
+DROP TABLE IF EXISTS ratings CASCADE;
 
 
 CREATE TABLE users

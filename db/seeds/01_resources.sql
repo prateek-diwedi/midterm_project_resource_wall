@@ -69,41 +69,41 @@ Also, here’s my solution code in Python and Java: https://www.csdojo.io/proble
 
 
 
-  INSERT INTO likes (liked, user_id, like_id)
+  INSERT INTO likes (liked, user_id, resource_id)
  VALUES ('TRUE ', 1, 1);
 
-   INSERT INTO likes (liked, user_id, like_id)
+   INSERT INTO likes (liked, user_id, resource_id)
  VALUES ('FALSE', 2, 2);
 
-   INSERT INTO likes (liked, user_id, like_id)
+   INSERT INTO likes (liked, user_id, resource_id)
  VALUES ('TRUE', 3, 3);
 
-   INSERT INTO likes (liked, user_id, like_id)
+   INSERT INTO likes (liked, user_id, resource_id)
  VALUES ('TRUE', 4, 4);
 
 
- INSERT INTO comments (comment, user_id, comment_id)
+ INSERT INTO comments (comment, user_id, resource_id)
  VALUES ('comment ', 1, 1);
 
-   INSERT INTO comments (comment, user_id, comment_id)
+   INSERT INTO comments (comment, user_id, resource_id)
  VALUES ('comment', 2, 2);
 
-   INSERT INTO comments (comment, user_id, comment_id)
+   INSERT INTO comments (comment, user_id, resource_id)
  VALUES ('comment', 3, 3);
 
-   INSERT INTO comments (comment, user_id, comment_id)
+   INSERT INTO comments (comment, user_id, resource_id)
  VALUES ('comment', 4, 4);
 
 
 
- INSERT INTO ratings (rating, user_id, rating_id)
+ INSERT INTO ratings (rating, user_id, resource_id)
  VALUES (4, 1, 1);
 
-   INSERT INTO ratings (rating, user_id, rating_id)
+   INSERT INTO ratings (rating, user_id, resource_id)
  VALUES (4, 2, 2);
 
-   INSERT INTO ratings (rating, user_id, rating_id)
+   INSERT INTO ratings (rating, user_id, resource_id)
  VALUES (4, 3, 3);
 
-   INSERT INTO ratings (rating, user_id, rating_id)
+   INSERT INTO ratings (rating, user_id, resource_id)
  VALUES (5, 4, 4);
