@@ -39,6 +39,7 @@ CREATE TABLE categories (
 
 CREATE TABLE likes (
    id SERIAL PRIMARY KEY NOT NULL,
+   liked boolean DEFAULT FALSE,
    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
    resource_id INTEGER REFERENCES learning_resources(id) ON DELETE CASCADE
  );

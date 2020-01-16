@@ -23,15 +23,28 @@ $(() => {
 
   });
 
-//////////// ----------------------- rating stars ----------------------------------
+  //////////// ----------------------- rating stars ----------------------------------
 
 
   $("body").on('click', '.star', (event) => {
     console.log('star clicked --->>', event.target.id);
     handleStarClick(event.target.id);
- });
 
-  function handleStarClick( starRating ) {
+    const resourceId = event.target.id.slice(event.target.id.indexOf('_') + 1); // Get the ID of the resource from the ID of the stars icon
+    $.ajax({
+      method: "POST",
+      url: `/api/resources/${resourceId}/ratings`,
+      // data: 'id'
+    }).done((users) => {
+      console.log('success:', users);
+    });
+    // gets button
+    const $target = $(event.target);
+    console.log('target --------------->>>>>>>>> ', $target);
+
+  });
+
+  function handleStarClick(starRating) {
 
     if (starRating === "1") {
       $(".oneStar").css("color", "gold");

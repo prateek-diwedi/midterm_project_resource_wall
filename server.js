@@ -138,13 +138,12 @@ app.post("/resource_view", (req, res) => {
 
 ///// ------------------------ likes -------------------------------
 
-
 app.post('/api/resources/:resource_id/likes', (req, res) => {
   const resourceId = req.params.resource_id;
   const userId = req.session.userId;
   console.log('logged in user id:', userId);
   dbHelper.addUserResourceLike(userId, resourceId).then((result) => {
-    
+
     res.status(200).send(`like insert result: ${result.rows[0]}`);
   }).catch(error => {
     console.log('error:', error);
@@ -157,6 +156,31 @@ app.post("/api/like", (req, res) => {
   let liked = 1;
   console.log('below liked--------->', req.body);
   dbHelper.increaseLike(liked);
+
+  res.redirect("/resource_view");
+});
+
+
+///// ------------------------ ratings -------------------------------
+
+app.post('/api/resources/:resource_id/ratings', (req, res) => {
+  const resourceId = req.params.resource_id;
+  const userId = req.session.userId;
+  console.log('logged in user id:', userId);
+  dbHelper.addUserResourceRating(userId, resourceId).then((result) => {
+
+    res.status(200).send(`rating insert result: ${result.rows[0]}`);
+  }).catch(error => {
+    console.log('error:', error);
+    res.status(500).send(`error inserting rating: ${error}`);
+  });
+});
+
+app.post("/api/rating", (req, res) => {
+  console.log('data sent to like', dbHelper.increaseRating());
+  let liked = 1;
+  console.log('below liked--------->', req.body);
+  dbHelper.increaseRating(liked);
 
   res.redirect("/resource_view");
 });
