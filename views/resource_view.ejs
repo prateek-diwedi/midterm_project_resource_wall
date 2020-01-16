@@ -31,12 +31,12 @@
       <div class="card mb-3" style="max-width: none;">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="<%= resource.url_image %>" class="card-img" alt="<%= resource.title %>" height="250px" width="250px">
+            <img src="<%= resource.url_image %>" class="card-img" alt="<%= resource.title %>" height="250px" width="250px" style="padding-top: 10px;">
           </div>
           <div class="col-md-8">
             <div class="card-body">
               <div class="header">
-              <pre class="creator">Reseouce Created By : <%= resource.email %></pre>
+              <pre class="creator">Resource Created By : <%= resource.email %></pre>
             </div>
               <h5 class="card-title"><%= resource.title %></h5>
               <p class="card-text"><%= resource.description %></p>
@@ -48,12 +48,13 @@
 
 
               <b class="rating">
-                 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                 <span class="fiveStar star" id="5">☆</span><span class="fourStar star" id="4">☆</span><span class="threeStar star" id="3">☆</span><span class="twoStar star" id="2">☆</span><span class="oneStar star" id=1>☆</span>
               </b>
-
+              <div > Avg. Rating :
               <b style="display: inline-table ; padding: 10px;">
               <%= resource.rating %>
             </b>
+          </div>
             </div>
             </div>
           </div>
