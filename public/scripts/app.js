@@ -1,5 +1,6 @@
 $(() => {
 
+  //////////// -------------------------------- LIKES -------------------------------------
   $("body").on('click', '.fa-thumbs-up', (event) => {
     console.log('event target ID:', event.target.id);
     const resourceId = event.target.id.slice(event.target.id.indexOf('_') + 1); // Get the ID of the resource from the ID of the thumbs up icon
@@ -22,6 +23,7 @@ $(() => {
 
 
   });
+
 
   //////////// ----------------------- rating stars ----------------------------------
 

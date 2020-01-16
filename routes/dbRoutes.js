@@ -81,7 +81,6 @@ module.exports = (db) => {
 
   });
 
-
   //// ---------------------------- logout ----------------------------
   router.get("/logout", (req, res) => {
     req.session = null;
@@ -93,35 +92,47 @@ module.exports = (db) => {
     const email = req.session.emai;
     res.render("update_profile", { email });
   });
+
+  ///////// -------------------------- update profile --------------------------
+  router.post("/updateprofile", (req, res) => {
+    const userId = req.session.userId;
+    console.log('user id in the request body -----<<>>', userId);
+    let userName = req.body.username;
+    let userEmail = req.body.email;
+    let userPassword = req.body.password;
+
+    let user = {
+      name: userName,
+      email: userEmail,
+      password: userPassword,
+      id: userId
+    };
+
+    const userUpdate = dbHelper.updateUser(user)
+      .then(data => {
+        if (data) {
+          req.session.userId = data.id;
+          req.session.email = data.email;
+          return res.redirect('/resource_view');
+        } else {
+          res.status(403).send("user not updated!!!!");
+        }
+      });
+
+
+  });
+
+
+
+
+
+
+
+
+
+
   return router;
 };
 
 
-///////// -------------------------- update profile --------------------------
-router.post("/updateprofile", (req, res) => {
-  const userId = req.session.userId;
-  console.log('user id in the request body -----<<>>', userId);
-  let userName = req.body.username;
-  let userEmail = req.body.email;
-  let userPassword = req.body.password;
 
-  let user = {
-    name: userName,
-    email: userEmail,
-    password: userPassword,
-    id: userId
-  };
-
-  const userUpdate = dbHelper.updateUser(user)
-    .then(data => {
-      if (data) {
-        req.session.userId = data.id;
-        req.session.email = data.email;
-        return res.redirect('/resource_view');
-      } else {
-        res.status(403).send("user not updated!!!!");
-      }
-    });
-
-
-});
