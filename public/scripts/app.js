@@ -50,22 +50,19 @@ $(() => {
   //////////// ----------------------- creator page redirect ----------------------------------
 
   $("body").on('click', '.creator', function (event) {
-
     //event.preventDefault();
     const $this = $(this);
     const creatorId = $this.children("span").attr("data-id");
     console.log('creator id in ajax -->>', creatorId);
-
     //event.preventDefault();
-
     $.ajax({
       method: "GET",
       url: `/api/creator/${creatorId}/creator`,
     }).done((users) => {
       console.log('success:', users);
+    }).catch(err=> {
+      console.log('error in creator  page', err);
     });
-
-
   });
 
 
