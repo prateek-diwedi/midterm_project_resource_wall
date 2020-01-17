@@ -1,0 +1,87 @@
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+  color: gold;
+}
+
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+
+.rating > span:hover,
+.rating > span:hover ~ span {
+  color: transparent;
+}
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+  content: "\2605";
+  position: absolute;
+  left: 0;
+  color: gold;
+  transform: scale(1.5);
+}
+
+.fa-thumbs-up:hover {
+  color: blueviolet;
+  transform: scale(1.5);
+}
+
+.fa-thumbs-up {
+  transition: transform .4s;
+}
+
+.mb-3:hover {
+  color: #07356e;
+  transform: scale(1.04);
+}
+
+.mb-3 {
+  box-shadow: 10px 10px 20px;
+  color: black;
+  transition: transform .7s;
+}
+
+.creator {
+  color: brown;
+}
+
+
+
+
+
+
+.ratingss {
+  float:left;
+  width:300px;
+}
+.ratingss span { float:right; position:relative; }
+.ratingss span input {
+  position:absolute;
+  top:0px;
+  left:0px;
+  opacity:0;
+}
+.ratingss span label {
+  display:inline-block;
+  width:30px;
+  height:30px;
+  text-align:center;
+  color:#FFF;
+  background:#ccc;
+  font-size:30px;
+  margin-right:2px;
+  line-height:30px;
+  border-radius:50%;
+  -webkit-border-radius:50%;
+}
+.ratingss span:hover ~ span label,
+.ratingss span:hover label,
+.ratingss span.checked label,
+.ratingss span.checked ~ span label {
+  background:#F90;
+  color:#FFF;
+}

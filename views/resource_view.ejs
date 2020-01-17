@@ -6,54 +6,109 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-  <!------------------ Font Awesome -->
+  <!------------------ Font Awesome ----------------------->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-------------------------------- rating css ---------------------------------->
+  <link rel="stylesheet" href="styles/rating.css" <!-------------------------------- rating css
+    ---------------------------------->
+  <link rel="stylesheet" href="styles/resource_view.css" />
 
 </head>
 
 <body>
   <%- include("./partials/_nav-bar") %>
-  <div class="card text-center">
-    <div class="card-header"></div>
-    <div class="card-body">
-      <h5 class="card-title">The Great wall of Resources</h5>
+  <div class="card text-center" ; ">
 
-      <% for (resource of rows) { %>
-      <p></p>
-        <div class="display div">
-      <div class="card border-success mb-3" style="max-width: 100rem;">
-        <div class="card-header bg-transparent border-success">Header</div>
-        <div class="card-body text-success">
-          <img src=<%= resource.url_image %> alt=<%= resource.title %> height="100" width="100">
+    <div class=" card-body">
+    <h5 class="card-title">The Great wall of Resources</h5>
+
+    <% for (resource of rows) { %>
+    <p></p>
+
+    <div class="card mb-3" style="max-width: none;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="<%= resource.url_image %>" class="card-img" alt="<%= resource.title %>" height="375px" ;
+            width="250px" style="padding-top: 3px; padding-bottom: 3px; padding-left: 4px;">
         </div>
-        <div class="all other data">
-          <h5 class="card-title"><%= resource.title %></h5>
+        <div class="col-md-8">
+          <div class="card-body">
+            <div class="header">
+              <a class="creator" href="/creator_profile">
+                Resource Created By : <%= resource.email %>
+                <span id="resourceid" data-id="<%= resource.user_id %>"></span></a>
+            </div>
+            <h5 class="card-title"><%= resource.title %></h5>
+            <p class="card-text"><%= resource.description %></p>
+            <p><a href="<%= resource.url %>">Click here to visit the RESOURCE !</a></p>
 
-          <p><a href="<%= resource.url %>">Click here to visit the RESOURCE !</a></p>
-          <p class="card-text"><%= resource.description %></p>
+
+            <div class="like-wrapper" data-resource-id="<%= resource.id %>" data-likes="<%= resource.liked%>">
+              <i class="fa fa-thumbs-up"></i>
+              <span class="likes"> <%= resource.liked %> </span>
+            </div>
+
+
+
+
+
+            <div class="ratingss">
+              <span><input type="radio" name="rating" id="str5" value="Your Rating 5"><label for="str5"></label></span>
+              <span><input type="radio" name="rating" id="str4" value="Your Rating 4"><label for="str4"></label></span>
+              <span><input type="radio" name="rating" id="str3" value="Your Rating 3"><label for="str3"></label></span>
+              <span><input type="radio" name="rating" id="str2" value="Your Rating 2"><label for="str2"></label></span>
+              <span><input type="radio" name="rating" id="str1" value="Your Rating 1"><label for="str1"></label></span>
+          </div>
+
+
+
+
+
+
+
+
+            <div class="ratingWrapper" data-resource-id="<%= resource.id %>" data-rating="<%= resource.rating %>">
+              <b class="rating" style="display: none;">
+                <span class="fiveStar star" id="5">☆</span><span class="fourStar star" id="4">☆</span><span
+                  class="threeStar star" id="3">☆</span><span class="twoStar star" id="2">☆</span><span
+                  class="oneStar star" id=1>☆</span>
+              </b>
+              <div>
+              <p><a href="/comments">Comments</a></p>
+            </div>
+              <div>
+                <b class="ratings"  style="display: inline-table ; padding: 10px;">
+                 <!-- <%= resource.rating %>  -->
+                </b>
+              </div>
+
+
+
+            </div>
+
+          </div>
         </div>
-        <div class="card-footer bg-transparent border-success">Footer</div>
-        <i class="fa fa-thumbs-up"> <%= resource.liked %></i>
-
       </div>
     </div>
-      <% } %>
 
-    </div>
-    <div class="card-footer text-muted"></div>
+    <% } %>
+
+  </div>
+
   </div>
 
 
   <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+
+  <script src="scripts/app.js"></script>
 </body>
 
 </html>
