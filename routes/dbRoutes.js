@@ -27,6 +27,18 @@ module.exports = (db) => {
     res.render("sign_up_page", { email });
   });
 
+  ////--------------------------- comments page-----------------------------
+  router.get("/comments", (req, res) => {
+    const email = req.session.email;
+    res.render("comments", { email });
+  });
+
+  ////--------------------------- resource creator profile page-----------------------------
+  router.get("/creator_profile", (req, res) => {
+    const email = req.session.email;
+    res.render("creator_profile", { email });
+  });
+
 
   // ------------------------------user sign up \\ add user in database -----------------------------
   router.post("/sign_up_page", (req, res) => {

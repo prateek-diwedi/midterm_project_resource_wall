@@ -1,7 +1,15 @@
+const starRatingClass = {
+  oneStar: 1,
+  twoStar: 2,
+  threeStar: 3,
+  fourStar: 4,
+  fiveStar: 5
+};
+
 $(() => {
 
   //////////// -------------------------------- LIKES -------------------------------------
-  $("body").on('click', '.like-wrapper', function(event) {
+  $("body").on('click', '.like-wrapper', function (event) {
     const $this = $(this);
     const { resourceId, likes } = $this.data(); // Get the ID of the resource from the ID of the thumbs up icon
 
@@ -10,35 +18,32 @@ $(() => {
       url: `/api/resources/${resourceId}/likes`,
       // data: 'id'
     }).done((users) => {
+      $this.find('.likes').html(Number(likes) + 1);
+      $this.data('likes', Number(likes) + 1);
       console.log('success:', users);
     });
 
-    $this.find('.likes').html(Number(likes) + 1)
-    $this.data('likes', Number(likes) + 1)
+
   });
 
 
   //////////// ----------------------- rating stars ----------------------------------
 
 
-  $("body").on('click', '.star', function(event) {
-    const $this = $(this)
-
-
-    console.log('star clicked --->>', event.target.id);
-    handleStarClick(event.target.id);
-
-    const resourceId = event.target.id.slice(event.target.id.indexOf('_') + 1); // Get the ID of the resource from the ID of the stars icon
+  $("body").on('click', '.ratingWrapper', function (event) {
+    const $this = $(this);
+    const { resourceId, rating } = $this.data();
+    console.log('rating ----->>>>', rating);
     $.ajax({
       method: "POST",
-      url: `/api/resources/${resourceId}/ratings`,
-      // data: 'id'
+      url: `/api/resources/${resourceId}/star/ratings`,
+      data: { star: event.target.id }
     }).done((users) => {
+      //$this.star[rating];
+      $this.data('rating', Number(rating));
       console.log('success:', users);
     });
-    // gets button
-    const $target = $(event.target);
-    console.log('target --------------->>>>>>>>> ', $target);
+
 
   });
 

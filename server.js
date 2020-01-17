@@ -100,6 +100,8 @@ app.post("/add_resources", (req, res) => {
   let categories = req.body.categories;
   console.log('categories', categories);
 
+  const userId = req.session.userId;
+  console.log('emailwhile creating resource', userId);
   let theTitle = req.body.title;
   let theDescription = req.body.description;
   let resource = {
@@ -107,7 +109,8 @@ app.post("/add_resources", (req, res) => {
     url_image: theUrlImage,
     title: theTitle,
     description: theDescription,
-    category_id: categories
+    category_id: categories,
+    user_id: userId
   };
 
   dbHelper.addResource(resource);
@@ -164,27 +167,32 @@ app.post("/api/like", (req, res) => {
 
 ///// ------------------------ ratings -------------------------------
 
-app.post('/api/resources/:resource_id/ratings', (req, res) => {
+app.post('/api/resources/:resource_id/star/ratings', (req, res) => {
   const resourceId = req.params.resource_id;
   const userId = req.session.userId;
-  console.log('logged in user id:', userId);
-  dbHelper.addUserResourceRating(userId, resourceId).then((result) => {
+  const stars = req.body.star;
 
-    res.status(200).send(`rating insert result: ${result.rows[0]}`);
+  console.log('resource id --->', resourceId, 'stars ---->>', stars);
+  console.log('logged in user id:', userId);
+  dbHelper.increaseRating(stars, userId, resourceId).then((result) => {
+    if (result && result.rows) {
+      res.status(200).send(`rating insert result: ${result.rows[0]}`);
+    } else {
+      res.status(500).send(`error inserting rating:`);
+    }
   }).catch(error => {
     console.log('error:', error);
-    res.status(500).send(`error inserting rating: ${error}`);
   });
 });
 
-app.post("/api/rating", (req, res) => {
-  console.log('data sent to like', dbHelper.increaseRating());
-  let liked = 1;
-  console.log('below liked--------->', req.body);
-  dbHelper.increaseRating(liked);
+// app.post("/api/rating", (req, res) => {
+//   console.log('data sent to like', dbHelper.increaseRating());
+//   //let rated = 1;
+//   console.log('below rated--------->', req.body);
+//   dbHelper.increaseRating(stars);
 
-  res.redirect("/resource_view");
-});
+//   res.redirect("/resource_view");
+// });
 
 
 

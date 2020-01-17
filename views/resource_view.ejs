@@ -35,31 +35,36 @@
         <div class="col-md-8">
           <div class="card-body">
             <div class="header">
-              <pre class="creator">Resource Created By : <%= resource.email %></pre>
+              <a class="creator" href="/creator_profile">Resource Created By : <%= resource.email %></a>
             </div>
             <h5 class="card-title"><%= resource.title %></h5>
             <p class="card-text"><%= resource.description %></p>
             <p><a href="<%= resource.url %>">Click here to visit the RESOURCE !</a></p>
 
 
-            <div class="like-wrapper" data-resource-id="<%= resource.id %>" data-likes="<%= resource.liked / 9%>">
+            <div class="like-wrapper" data-resource-id="<%= resource.id %>" data-likes="<%= resource.liked%>">
               <i class="fa fa-thumbs-up"></i>
-              <span class="likes"> <%= resource.liked / 9%> </span>
+              <span class="likes"> <%= resource.liked %> </span>
             </div>
 
 
-            <div>
+            <div class="ratingWrapper" data-resource-id="<%= resource.id %>" data-rating="<%= resource.rating %>">
               <b class="rating">
                 <span class="fiveStar star" id="5">☆</span><span class="fourStar star" id="4">☆</span><span
                   class="threeStar star" id="3">☆</span><span class="twoStar star" id="2">☆</span><span
                   class="oneStar star" id=1>☆</span>
               </b>
+              <p><a href="/comments">Comments</a></p>
               <div> Avg. Rating :
-                <b style="display: inline-table ; padding: 10px;">
+                <b class="ratings"  style="display: inline-table ; padding: 10px;">
                   <%= resource.rating %>
                 </b>
               </div>
+
+
+
             </div>
+
           </div>
         </div>
       </div>
