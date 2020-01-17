@@ -33,12 +33,12 @@ $(() => {
   $("body").on('click', '.ratingWrapper', function (event) {
     const $this = $(this);
     const { resourceId, rating } = $this.data();
-    console.log('rating ----->>>>', rating);
+    console.log('rating  star----->>>>', $this.data());
     $.ajax({
       method: "POST",
       url: `/api/resources/${resourceId}/star/ratings`,
     }).done((users) => {
-      $this.star[rating];
+      //$this.star[rating];
       $this.data('rating', Number(rating));
       //handleStarClick();
       console.log('success:', users);
@@ -83,6 +83,44 @@ $(() => {
       $this.text('Following');
     }
   });
+
+  ////// ------------------------- change rating color ----------------
+  console.log("hslkdhjfsdflkjds");
+  $('.rating').click(function () {
+    var $this = $(this);
+    console.log('here ', this)
+    $this.toggleClass('followButton');
+    console.log('here ', this)
+
+    if ($this.hasClass('followButton')) {
+      $this.text('Follow');
+    } else {
+      $this.text('Following');
+    }
+  });
+
+
+
+
+
+  $(document).ready(function () {
+    // Check Radio-box
+    $(".ratingss input:radio").attr("checked", false);
+
+    $('.ratingss input').click(function () {
+      $(".ratingss span").removeClass('checked');
+      $(this).parent().addClass('checked');
+    });
+
+    $('input:radio').change(
+      function () {
+        var userRating = this.value;
+        alert(userRating);
+      });
+  });
+
+
+
 
 
 
