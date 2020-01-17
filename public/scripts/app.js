@@ -70,10 +70,13 @@ $(() => {
 
 
   ////// ------------------------- change button to following ----------------
-
+  console.log("hslkdhjfsdflkjds");
   $('#followButton').click(function () {
     var $this = $(this);
+    console.log('here ', this)
     $this.toggleClass('followButton');
+    console.log('here ', this)
+
     if ($this.hasClass('followButton')) {
       $this.text('Follow');
     } else {
