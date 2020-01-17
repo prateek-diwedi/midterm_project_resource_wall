@@ -35,7 +35,9 @@
         <div class="col-md-8">
           <div class="card-body">
             <div class="header">
-              <a class="creator" href="/creator_profile">Resource Created By : <%= resource.email %></a>
+              <a class="creator" href="/creator_profile">
+                Resource Created By : <%= resource.email %>
+                <span id="resourceid" data-id="<%= resource.user_id %>"></span></a>
             </div>
             <h5 class="card-title"><%= resource.title %></h5>
             <p class="card-text"><%= resource.description %></p>
@@ -70,26 +72,6 @@
       </div>
     </div>
 
-
-    <!--
-        <div class="display div">
-      <div class="card border-success mb-3" style="max-width: 100rem;">
-        <div class="card-header bg-transparent border-success">Header</div>
-        <div class="card-body text-success">
-          <img src=<%= resource.url_image %> alt=<%= resource.title %> height="100" width="100">
-        </div>
-        <div class="all other data">
-          <h5 class="card-title"><%= resource.title %></h5>
-
-          <p><a href="<%= resource.url %>">Click here to visit the RESOURCE !</a></p>
-          <p class="card-text"><%= resource.description %></p>
-        </div>
-        <div class="card-footer bg-transparent border-success">Footer</div>
-        <i class="fa fa-thumbs-up"> <%= resource.liked %></i>
-
-      </div>
-    </div>
-    -->
     <% } %>
 
   </div>

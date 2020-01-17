@@ -101,7 +101,7 @@ app.post("/add_resources", (req, res) => {
   console.log('categories', categories);
 
   const userId = req.session.userId;
-  console.log('emailwhile creating resource', userId);
+  console.log('emailwhile creating resource', user);
   let theTitle = req.body.title;
   let theDescription = req.body.description;
   let resource = {
@@ -194,6 +194,16 @@ app.post('/api/resources/:resource_id/star/ratings', (req, res) => {
 //   res.redirect("/resource_view");
 // });
 
+///// ------------------------ Creator Page Navigator -------------------------------
+
+app.get("/api/creator/${creatorId}/creator", (req, res) => {
+
+  console.log('resource creator page >>>>>>>>>>>>>>>>>>>>>>', req.session);
+  //const email = req.session.email;
+
+  dbHelper.getCreatorDetails(req.query)
+    .then(rows => res.render("creator_profile", { rows }));
+});
 
 
 

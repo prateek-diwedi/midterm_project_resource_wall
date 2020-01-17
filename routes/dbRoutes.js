@@ -35,8 +35,9 @@ module.exports = (db) => {
 
   ////--------------------------- resource creator profile page-----------------------------
   router.get("/creator_profile", (req, res) => {
-    const email = req.session.email;
-    res.render("creator_profile", { email });
+    //const email = req.session.email;
+    dbHelper.getCreatorDetails(req.query)
+      .then(rows => res.render("creator_profile", { rows }));
   });
 
 

@@ -19,7 +19,7 @@ $(() => {
       // data: 'id'
     }).done((users) => {
       $this.find('.likes').html(Number(likes) + 1);
-      $this.data('likes', Number(likes) + 1);
+      //$this.data('likes', Number(likes) + 1);
       console.log('success:', users);
     });
 
@@ -37,7 +37,6 @@ $(() => {
     $.ajax({
       method: "POST",
       url: `/api/resources/${resourceId}/star/ratings`,
-      data: { star: event.target.id }
     }).done((users) => {
       //$this.star[rating];
       $this.data('rating', Number(rating));
@@ -47,7 +46,43 @@ $(() => {
 
   });
 
-  function handleStarClick(starRating) {
+  //////////// ----------------------- creator page redirect ----------------------------------
+
+  $("body").on('click', '.creator', function (event) {
+
+    //event.preventDefault();
+    const $this = $(this);
+    const creatorId = $this.children("span").attr("data-id");
+    console.log('creator id in ajax -->>', creatorId);
+
+    //event.preventDefault();
+
+    $.ajax({
+      method: "GET",
+      url: `/api/creator/${creatorId}/creator`,
+    }).done((users) => {
+      console.log('success:', users);
+    });
+
+
+  });
+
+
+  ////// ------------------------- change button to following ----------------
+
+  $('.followBTN').click(function () {
+    var $this = $(this);
+    $this.toggleClass('followBTN');
+    if ($this.hasClass('followBTN')) {
+      $this.text('Follow');
+    } else {
+      $this.text('Following');
+    }
+  });
+
+
+
+  const handleStarClick = function (starRating) {
 
     if (starRating === "1") {
       $(".oneStar").css("color", "gold");
@@ -78,7 +113,7 @@ $(() => {
       $(".fourStar").css("color", "gold");
       $(".fiveStar").css("color", "gold");
     }
-  }
+  };
 
 
   //handleStarClick( 4 );
