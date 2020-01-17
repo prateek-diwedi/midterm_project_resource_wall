@@ -101,7 +101,7 @@ app.post("/add_resources", (req, res) => {
   console.log('categories', categories);
 
   const userId = req.session.userId;
-  console.log('emailwhile creating resource', user);
+  console.log('emailwhile creating resource', userId);
   let theTitle = req.body.title;
   let theDescription = req.body.description;
   let resource = {

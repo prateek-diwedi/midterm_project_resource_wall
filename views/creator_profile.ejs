@@ -29,9 +29,9 @@
         <div class="card-header">
           <h3 style="
           padding-top: 50px;
-      ">Profile of <%= resource.name %></h3>
+      ">Profile of Resource Creator.</h3>
           <div class="d-flex justify-content-end social_icon">
-            <span><a href="https://www.facebook.com/" style="color: #FFC312;"><i class="fab fa-facebook-square"></i></a></span>
+            <span><a href="https://www.facebook.com/diwedi" style="color: #FFC312;"><i class="fab fa-facebook-square"></i></a></span>
             <span><i class="fab fa-google-plus-square"></i></span>
             <span><i class="fab fa-twitter-square"></i></span>
           </div>
@@ -50,7 +50,7 @@
         </div>
         <div class="card-footer">
           <div class="followBTN">
-          <button type="button" class="btn btn-primary">Follow</button>
+          <button type="button" class="btn btn-primary" id="followButton"> Follow </button>
           <span> <a href="/resource_view"> <button type="button" class="btn btn-primary">Back</button></a></span>
         </div>
         </div>
@@ -58,6 +58,7 @@
     </div>
   </div>
   <% } %>
+  
 </body>
 
 </html>

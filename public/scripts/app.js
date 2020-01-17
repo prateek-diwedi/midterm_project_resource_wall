@@ -38,8 +38,9 @@ $(() => {
       method: "POST",
       url: `/api/resources/${resourceId}/star/ratings`,
     }).done((users) => {
-      //$this.star[rating];
+      $this.star[rating];
       $this.data('rating', Number(rating));
+      //handleStarClick();
       console.log('success:', users);
     });
 
@@ -70,10 +71,10 @@ $(() => {
 
   ////// ------------------------- change button to following ----------------
 
-  $('.followBTN').click(function () {
+  $('#followButton').click(function () {
     var $this = $(this);
-    $this.toggleClass('followBTN');
-    if ($this.hasClass('followBTN')) {
+    $this.toggleClass('followButton');
+    if ($this.hasClass('followButton')) {
       $this.text('Follow');
     } else {
       $this.text('Following');
