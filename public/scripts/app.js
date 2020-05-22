@@ -54,47 +54,48 @@ $(() => {
     const $this = $(this);
     const creatorId = $this.children("span").attr("data-id");
     console.log('creator id in ajax -->>', creatorId);
-    //event.preventDefault();
-    $.ajax({
-      method: "GET",
-      url: `/api/creator/${creatorId}/creator`,
-    }).done((users) => {
-      console.log('success:', users);
-    }).catch(err=> {
-      console.log('error in creator  page', err);
-    });
+    window.href='/creator_profile/7';
+   // event.preventDefault();
+    // $.ajax({
+    //   method: "GET",
+    //   url: `/api/creator/${creatorId}/creator`,
+    // }).done((users) => {
+    //   console.log('success:', users);
+    // }).catch(err=> {
+    //   console.log('error in creator  page', err);
+    // });
   });
 
 
   ////// ------------------------- change button to following ----------------
-  console.log("hslkdhjfsdflkjds");
-  $('#followButton').click(function () {
-    var $this = $(this);
-    console.log('here ', this)
-    $this.toggleClass('followButton');
-    console.log('here ', this)
+  // console.log("hslkdhjfsdflkjds");
+  // $('#followButton').click(function () {
+  //   var $this = $(this);
+  //   console.log('here ', this)
+  //   $this.toggleClass('followButton');
+  //   console.log('here ', this)
 
-    if ($this.hasClass('followButton')) {
-      $this.text('Follow');
-    } else {
-      $this.text('Following');
-    }
-  });
+  //   if ($this.hasClass('followButton')) {
+  //     $this.text('Follow');
+  //   } else {
+  //     $this.text('Following');
+  //   }
+  // });
 
   ////// ------------------------- change rating color ----------------
-  console.log("hslkdhjfsdflkjds");
-  $('.rating').click(function () {
-    var $this = $(this);
-    console.log('here ', this)
-    $this.toggleClass('followButton');
-    console.log('here ', this)
+  // console.log("hslkdhjfsdflkjds");
+  // $('.rating').click(function () {
+  //   var $this = $(this);
+  //   console.log('here ', this)
+  //   $this.toggleClass('followButton');
+  //   console.log('here ', this)
 
-    if ($this.hasClass('followButton')) {
-      $this.text('Follow');
-    } else {
-      $this.text('Following');
-    }
-  });
+  //   if ($this.hasClass('followButton')) {
+  //     $this.text('Follow');
+  //   } else {
+  //     $this.text('Following');
+  //   }
+  // });
 
 
 

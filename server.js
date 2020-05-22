@@ -200,7 +200,7 @@ app.get("/api/creator/${creatorId}/creator", (req, res) => {
 
   console.log('resource creator page >>>>>>>>>>>>>>>>>>>>>>', req.session);
   //const email = req.session.email;
-
+  console.log("test",req.query);
   dbHelper.getCreatorDetails(req.query)
     .then(rows => res.render("creator_profile", { rows }));
 });
